@@ -1,10 +1,11 @@
-#include "WeatherDirection.h"
+﻿#include "App.h"
+
+App app{};
 
 void setup() {
   Serial.begin(9600);
-  WeatherDirection weatherDirection{};
-  Serial.println(weatherDirection.directionToString(weatherDirection.getCurrentDirection()));
 }
 
 void loop() {
+    app.update();
 }
