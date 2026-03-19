@@ -1,11 +1,12 @@
-﻿#include "Wind.h"
+﻿#include "App.h"
+#include "Wind.h"
 #include "Screen.h"
 #include "Config.h"
+#include "utils.h"
 
-App::App() : screen{ Config::screen }, wind{ Config::windSensorPin } {}
+App::App()
+  : screen{ Config::screen }, wind{ Config::windSensorPin } {}
 
 void App::update() {
-	Direction windDirection = wind.getDirection();
-	screen.printLine(wind.directionToString(windDirection));
-	delay(1000);
+	screen.printLine(wind.toString());
 }

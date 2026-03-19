@@ -32,4 +32,6 @@ public:
 	String directionToString(Direction direction);
 	Direction getDirection();
 	const WindData& getWindData(Direction direction);
+	int getDataPin();
+	String toString();
 };
