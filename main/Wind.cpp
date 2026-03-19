@@ -5,15 +5,15 @@
 #include <math.h>
 
 const WindData Wind::windData[9] = {
-	{ Direction::None, "Tuntematon ilmansuunta", -1.0f, -1 },
-	{ Direction::North, "Pohjoinen", 0.0f, 0 },
-	{ Direction::NorthEast, "Koillinen", 0.48f, 45 },
-	{ Direction::East, "Itä", 0.96f, 90 },
-	{ Direction::SouthEast, "Kaakko", 1.43f, 135 },
-	{ Direction::South, "Etelä", 1.91f, 180 },
-	{ Direction::SouthWest, "Lounas", 2.37f, 225 },
-	{ Direction::West, "Länsi", 2.87f, 270 },
-	{ Direction::NorthWest, "Luode", 3.32f, 315 }
+	{ Direction::None, "Unknown", -1.0f, -1 },
+	{ Direction::North, "North", 0.0f, 0 },
+	{ Direction::NorthEast, "North East", 0.48f, 45 },
+	{ Direction::East, "East", 0.96f, 90 },
+	{ Direction::SouthEast, "South East", 1.43f, 135 },
+	{ Direction::South, "South", 1.91f, 180 },
+	{ Direction::SouthWest, "South West", 2.37f, 225 },
+	{ Direction::West, "West", 2.87f, 270 },
+	{ Direction::NorthWest, "North West", 3.32f, 315 }
 };
 
 Wind::Wind(int dataPin)
