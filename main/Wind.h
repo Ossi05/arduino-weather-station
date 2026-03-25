@@ -24,14 +24,14 @@ class Wind {
 private:
 	static const WindData windData[9];
 	const int dataPin;
-	Direction voltageToDirection(float voltage);
+	Direction voltageToDirection(float voltage) const;
 
 public:
 	Wind(int dataPin);
 
-	String directionToString(Direction direction);
-	Direction getDirection();
-	const WindData& getWindData(Direction direction);
-	int getDataPin();
-	String toString();
+	const String& directionToString(Direction direction) const;
+	Direction getDirection() const;
+	const WindData& getWindData(Direction direction) const;
+	int getDataPin() const;
+	String toString() const;
 };

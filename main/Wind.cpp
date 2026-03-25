@@ -20,11 +20,11 @@ Wind::Wind(int dataPin)
   : dataPin{ dataPin } {
 }
 
-String Wind::directionToString(Direction direction) {
+const String& Wind::directionToString(Direction direction) const {
 	return getWindData(direction).name;
 }
 
-Direction Wind::voltageToDirection(float voltage) {
+Direction Wind::voltageToDirection(float voltage) const {
 	Direction direction{ Direction::None };
 	float minDifference{ 100.0f };
 	float offset{ 0.15f };
@@ -38,14 +38,14 @@ Direction Wind::voltageToDirection(float voltage) {
 	return direction;
 }
 
-Direction Wind::getDirection() {
+Direction Wind::getDirection() const {
 	int windAnalogValue{ analogRead(dataPin) };
 	float voltage{ analogToVoltage(windAnalogValue) };
 
 	return voltageToDirection(voltage);
 }
 
-const WindData& Wind::getWindData(Direction direction) {
+const WindData& Wind::getWindData(Direction direction) const {
 	for (int i = 1; i < 9; i++) {
 		if (windData[i].dir == direction) {
 			return windData[i];
@@ -54,11 +54,11 @@ const WindData& Wind::getWindData(Direction direction) {
 	return windData[0];
 }
 
-int Wind::getDataPin() {
+int Wind::getDataPin() const {
 	return dataPin;
 }
 
-String Wind::toString() {
+String Wind::toString() const {
 	Direction dir{ getDirection() };
 	String dirStr{ directionToString(dir) };
 	int numSamples{ 100 };
