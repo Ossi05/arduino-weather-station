@@ -13,7 +13,11 @@ struct ScreenConfig {
 	uint8_t rows;
 };
 
-constexpr ScreenConfig screen = { 8, 7, 6, 5, 4, 3, 16, 2 };  // RS, E, D4, D5, D6, D7, COLS, ROWS
+constexpr ScreenConfig screen = { 8, 7, 6, 5, 4, 3, 20, 4 };  // RS, E, D4, D5, D6, D7, COLS, ROWS
 constexpr uint8_t windSensorPin = A0;                         // Pin that is used to read the wind direction
-constexpr uint8_t RainSensorPin = 2;                          // D2
+
+constexpr uint8_t rainSensorPin = 2;        // D2
+constexpr uint8_t rainIntervalSeconds = 5;  // Max 8.3
+constexpr uint8_t rainTimerTickCount = 2; // Number of timer ticks before updating the rain data (must be >= 1)
+
 }
