@@ -29,8 +29,8 @@ private:
 	uint8_t intervalSeconds;
 
 	unsigned long getAndResetIntervalPulses();
-	float calculateFrequencyFromPulses(unsigned long pulses, uint8_t intervalSeconds) const;  // Laskee signaalin taajuuden
-	float calculateRainFallMmPerHour(float frequencyHz) const;                                // Muuntaa taajuuden säädataksi
+	float calculateFrequencyFromPulses(unsigned long pulses, uint8_t intervalSeconds) const;  // Calculates signals frequency
+	float calculateRainFallMmPerHour(float frequencyHz) const;                                // Converts frequency to mm/h
 	void resetIntervalPulses();
 
 	// TimerOne
@@ -44,5 +44,5 @@ public:
 	void setup() const;
 	String toString() const;
 
-	RainData getLatestData() const;
+	RainData getLatestIntervalData() const;
 };

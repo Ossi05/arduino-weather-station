@@ -1,8 +1,8 @@
-﻿#include "Wind.h"
-#include <string.h>
-#include "utils.h"
+﻿#include "utils.h"
+#include "Wind.h"
 #include <Arduino.h>
 #include <math.h>
+#include <string.h>
 
 const WindData Wind::windData[9] = {
 	{ Direction::None, "Unknown", -1.0f, -1 },
@@ -17,7 +17,7 @@ const WindData Wind::windData[9] = {
 };
 
 Wind::Wind(int dataPin)
-  : dataPin{ dataPin } {
+	: dataPin{ dataPin } {
 }
 
 const String& Wind::directionToString(Direction direction) const {
@@ -43,6 +43,12 @@ Direction Wind::getDirection() const {
 	float voltage{ analogToVoltage(windAnalogValue) };
 
 	return voltageToDirection(voltage);
+}
+
+Direction Wind::getAveragedDirection(int numSamples) const
+{
+	float avgVoltage{ getAverageVoltage(numSamples, dataPin) };
+	return voltageToDirection(avgVoltage);
 }
 
 const WindData& Wind::getWindData(Direction direction) const {

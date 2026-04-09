@@ -5,7 +5,7 @@
 Rain* Rain::instance{ nullptr };
 
 Rain::Rain(uint8_t pin, float mmPerPulse, uint8_t intervalSeconds, uint8_t timerTickCount)
-	: dataPin{ pin }, mmPerPulse{ mmPerPulse }, intervalSeconds{ intervalSeconds }, totalPulseCount{ 0 }, intervalPulseCount{ 0 }, lastIntervalPulses{ 0 }, currentFrequencyHz{ 0.0 }, currentRainfallMmPerHour{ 0.0 }, maxTimerTickCount{ timerTickCount }, currentTimerTickCount{0} {
+	: dataPin{ pin }, mmPerPulse{ mmPerPulse }, intervalSeconds{ intervalSeconds }, totalPulseCount{ 0 }, intervalPulseCount{ 0 }, lastIntervalPulses{ 0 }, currentFrequencyHz{ 0.0 }, currentRainfallMmPerHour{ 0.0 }, maxTimerTickCount{ timerTickCount }, currentTimerTickCount{ 0 } {
 
 	if (instance != nullptr) {
 		Serial.println("FATAL ERROR: Multiple Rain instances created!");
@@ -27,7 +27,7 @@ void Rain::setup() const {
 
 float Rain::getTotalRainfallMm() const {
 	noInterrupts();
-	unsigned long currentPulses {totalPulseCount};
+	unsigned long currentPulses{ totalPulseCount };
 	interrupts();
 
 	return currentPulses * mmPerPulse;
@@ -49,8 +49,8 @@ void Rain::updateMetrics() {
 
 	if (++currentTimerTickCount >= maxTimerTickCount) {
 		lastIntervalPulses = intervalPulseCount;
-		intervalPulseCount = 0; 
-		currentTimerTickCount = 0;     
+		intervalPulseCount = 0;
+		currentTimerTickCount = 0;
 
 		currentFrequencyHz = calculateFrequencyFromPulses(lastIntervalPulses, intervalSeconds * 2);
 		currentRainfallMmPerHour = calculateRainFallMmPerHour(currentFrequencyHz);
@@ -77,7 +77,7 @@ String Rain::toString() const {
 
 unsigned long Rain::getAndResetIntervalPulses() {
 	noInterrupts();
-	unsigned long currentPulses {intervalPulseCount};
+	unsigned long currentPulses{ intervalPulseCount };
 	intervalPulseCount = 0;
 	interrupts();
 
@@ -99,7 +99,7 @@ void Rain::resetIntervalPulses() {
 	interrupts();
 }
 
-RainData Rain::getLatestData() const {
+RainData Rain::getLatestIntervalData() const {
 
 	noInterrupts();
 	RainData data{

@@ -31,6 +31,7 @@ public:
 
 	const String& directionToString(Direction direction) const;
 	Direction getDirection() const;
+	Direction getAveragedDirection(int samples) const;
 	const WindData& getWindData(Direction direction) const;
 	int getDataPin() const;
 	String toString() const;
