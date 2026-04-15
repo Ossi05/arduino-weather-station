@@ -37,7 +37,6 @@ flowchart TD
 
     %% Sivuttaiset yhteydet
     S3 -.-> I1
-    I2 -.-> L6
 
     %% Laatikoiden tyylittely
     style Alustus fill:#E3F2FD,stroke:#1565C0,stroke-width:2px
