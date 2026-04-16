@@ -28,5 +28,5 @@ public:
 	bool isConnected() const;
 
 	const byte* getIp() const;
-	String ipToString(const byte[4]) const;);
+	String ipToString(const byte ipArray[4]) const;
 };
