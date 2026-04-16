@@ -99,17 +99,15 @@ void App::buildAndSendMqttPayload() {
 }
 
 String App::buildMqttPayload(const WindData& windData, const RainData& rainData) const {
-	String payload = "IOTJS={";
+	char buffer[256];
 
-	// Wind degree
-	payload += "\"S_name1\":\"" + String(Config::sNamePrefix) + "_wind_deg\",";
-	payload += "\"S_value1\":" + String(windData.degree) + ",";
+	snprintf(buffer, sizeof(buffer),
+		"IOTJS={\"S_name1\":\"%s_wind_deg\",\"S_value1\":%d,\"S_name2\":\"%s_h_rain_mm\",\"S_value2\":%.2f}",
+		Config::sNamePrefix,
+		windData.degree,
+		Config::sNamePrefix,
+		rainData.hourlyRainfallMm
+	);
 
-	// Hourly rainfall
-	payload += "\"S_name2\":\"" + String(Config::sNamePrefix) + "_h_rain_mm\",";
-	payload += "\"S_value2\":" + String(rainData.hourlyRainfallMm);
-	payload += "}";
-
-
-	return payload;
+	return String(buffer);
 }
